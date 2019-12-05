@@ -3,8 +3,8 @@ Contains tests for app.main.forms.EditProfileForm class
 """
 # pylint: disable=unused-argument
 from unittest import mock
-import pytest
 from wtforms.validators import ValidationError
+import pytest
 from app.main.forms import EditProfileForm
 
 

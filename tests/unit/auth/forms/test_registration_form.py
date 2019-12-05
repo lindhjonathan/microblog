@@ -3,8 +3,8 @@ Contains tests fortest_app.auth.forms.RegistrationForm class
 """
 # pylint: disable=unused-argument
 from unittest import mock
-import pytest
 from wtforms.validators import ValidationError
+import pytest
 from app.auth.forms import RegistrationForm
 
 
