@@ -10,8 +10,8 @@ from flask_login import UserMixin
 from app import db, login
 
 followers = db.Table('followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
 class User(UserMixin, db.Model):
@@ -46,7 +46,7 @@ class User(UserMixin, db.Model):
         """
         current_app.logger.debug("Checking password {}".format(password))
         return check_password_hash(self.password_hash, password)
-
+    
     def follow(self, user):
         """
         Check if user is a follower or add new if not already following

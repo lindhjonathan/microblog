@@ -4,7 +4,8 @@ Adding to commit again
 """
 from datetime import datetime, timedelta
 import pytest
-from app import bp, db
+from app import db
+#from app import bp
 from app.models import User, Post
 
 class UserModelCase():
@@ -31,8 +32,6 @@ class UserModelCase():
         """
         u = User(username='susan')
         u.set_password('cat')
-        # self.assertFalse(u.check_password('dog'))
-        # self.assertTrue(u.check_password('cat'))
 
         assert u.check_password('dog') is False
         assert u.check_password('cat') is True
@@ -59,19 +58,12 @@ class UserModelCase():
         db.session.add(u1)
         db.session.add(u2)
         db.session.commit()
-        # self.assertEqual(u1.followed.all(), [])
-        # self.assertEqual(u1.followers.all(), [])
 
         assert u1.followed.all() == []
         assert u1.followers.all() == []
 
         u1.follow(u2)
         db.session.commit()
-        # self.assertTrue(u1.is_following(u2))
-        # self.assertEqual(u1.followed.count(), 1)
-        # self.assertEqual(u1.followed.first().username, 'susan')
-        # self.assertEqual(u2.followers.count(), 1)
-        # self.assertEqual(u2.followers.first().username, 'john')
 
         assert u1.is_following(u2) is True
         assert u1.followed.count() == 1
@@ -81,9 +73,6 @@ class UserModelCase():
 
         u1.unfollow(u2)
         db.session.commit()
-        # self.assertFalse(u1.is_following(u2))
-        # self.assertEqual(u1.followed.count(), 0)
-        # self.assertEqual(u2.followers.count(), 0)
 
         assert u1.is_following(u2) is False
         assert u1.followed.count() == 0
@@ -125,10 +114,6 @@ class UserModelCase():
         f2 = u2.followed_posts().all()
         f3 = u3.followed_posts().all()
         f4 = u4.followed_posts().all()
-        # self.assertEqual(f1, [p2, p4, p1])
-        # self.assertEqual(f2, [p2, p3])
-        # self.assertEqual(f3, [p3, p4])
-        # self.assertEqual(f4, [p4])
 
         assert f1 == [p2, p4, p1]
         assert f2 == [p2, p3]
