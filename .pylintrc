@@ -24,4 +24,4 @@ reports=no
 #include-ids=yes
 
 [IMPORTS]
---allow-any-import-level
+#allow-any-import-level
