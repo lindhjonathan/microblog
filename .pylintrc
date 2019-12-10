@@ -22,3 +22,6 @@ max-module-lines=5000
 
 reports=no
 #include-ids=yes
+
+[IMPORTS]
+--allow-any-import-level

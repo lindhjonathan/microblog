@@ -38,9 +38,10 @@ def create_app(config_class=ProdConfig):
     login.init_app(app)
     moment.init_app(app)
     bootstrap.init_app(app)
-    
+
 
     #pylint: disable=wrong-import-position, cyclic-import
+    #pylint: disable=import-outside-toplevel, cyclic-import
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
@@ -49,6 +50,7 @@ def create_app(config_class=ProdConfig):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+    #pylint: enable=import-outside-toplevel, cyclic-import
     #pylint: enable=wrong-import-position, cyclic-import
 
 
