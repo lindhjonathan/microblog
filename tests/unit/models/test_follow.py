@@ -16,7 +16,7 @@ class UserModelCase():
         """
         Set up database session
         """
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        db.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
     def tearDown(self):
@@ -41,9 +41,9 @@ class UserModelCase():
         Assert that the gratavar is correct for user
         """
         u = User(username='john', email='john@example.com')
-        self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'
-                                         'd4c74594d841139328695756648b6bd6'
-                                         '?d=identicon&s=128'))
+        # self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'
+        #                                  'd4c74594d841139328695756648b6bd6'
+        #                                  '?d=identicon&s=128'))
 
         assert str(u.avatar(128)) == ('https://www.gravatar.com/avatar/'
                                       'd4c74594d841139328695756648b6bd6'
